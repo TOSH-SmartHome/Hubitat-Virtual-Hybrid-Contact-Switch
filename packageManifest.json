@@ -1,16 +1,16 @@
 {
-  "packageName": "Virtual Hybrid Contact Switch",
+  "packageName": "Hubitat Virtual Hybrid Contact Switch",
   "author": "John Goughenour",
   "version": "2.0.1",
   "minimumHEVersion": "2.1.9",
   "dateReleased": "2023-12-29",
-  "licenseFile": "https://raw.githubusercontent.com/TOSH-SmartHome/Virtual-Hybrid-Contact-Switch/main/LICENSE",
+  "licenseFile": "https://raw.githubusercontent.com/TOSH-SmartHome/Hubitat-Virtual-Hybrid-Contact-Switch/main/LICENSE",
   "drivers": [
     {
       "id": "d66b2e2d-6d8b-4ae7-9db4-35be058a2483",
       "name": "Virtual Hybrid Contact Switch",
       "namespace": "tosh",
-      "location": "https://raw.githubusercontent.com/TOSH-SmartHome/Virtual-Hybrid-Contact-Switch/main/virtual_hybrid_contact_switch.groovy",
+      "location": "https://raw.githubusercontent.com/TOSH-SmartHome/Hubitat-Virtual-Hybrid-Contact-Switch/main/virtual_hybrid_contact_switch.groovy",
       "required": false
     }
   ]

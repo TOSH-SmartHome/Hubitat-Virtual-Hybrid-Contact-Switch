@@ -37,15 +37,14 @@ metadata {
     
         command "open"
         command "close"
-        command "clearMqttBrokerSettings"
         command "sendMqttOn"
         command "sendMqttOff"
-        command "setMqttBroker", [[name: "MQTT Broker*", type: "STRING", description: "Enter MQTT Broker IP and Port e.g. server_IP:1883"],
-                                  [name: "MQTT User*", type: "STRING", description: "Enter MQTT broker username"]]
-        command "setMessageTopic", [[name: "Message Topic", type: "STRING", description: "Enter MQTT Message Topic to publish to"]]
     }
     preferences {
-        input(name: "mqttPassword", type: "password", title: "<b>MQTT Password</b>", description: "The password for your MQTT Broker.</br>Enter Password", required: false)
+        input(name: "mqttBroker", type: "string", title: "<b>MQTT Broker</b>", description: "Enter MQTT Broker IP and Port e.g. server_IP:1883", required: false)
+        input(name: "mqttUsername", type: "string", title: "<b>MQTT Username</b>", description: "Enter MQTT broker username", required: false)
+        input(name: "mqttPassword", type: "password", title: "<b>MQTT Password</b>", description: "Enter password for your MQTT Broker", required: false)
+        input(name: "mqttTopic", type: "string", title: "<b>MQTT Topic</b>", description: "Enter MQTT Room Topic to listen for", required: false)
         input name: "autoOff", type: "number", title: "<b>Auto Off</b>", 
             description: "Automatically turn off device after x many seconds </br>Default: 0 (Disabled)",
             defaultValue: 0, required: false
@@ -119,18 +118,18 @@ def setMessageTopic(topic) {
 }
 
 def sendMqttCommand(cmnd) {
-    if(getDataValue("MQTT_Broker") && getDataValue("MQTT_User")) {
+    if(mqttBroker && mqttUsername) {
         try {
             if(debugLogging) log.debug "${device.displayName} settting up MQTT Broker"
-            interfaces.mqtt.connect("tcp://${getDataValue("MQTT_Broker")}", "hubitat_messages", getDataValue("MQTT_User"), mqttPassword)
+            interfaces.mqtt.connect("tcp://${mqttBroker}", "hubitat_messages", mqttUsername, mqttPassword)
             
             if(debugLogging) log.debug "${device.displayName} is sending message: ${message}"
-            interfaces.mqtt.publish(getDataValue("MQTT_Message_Topic"), cmnd, 2, false)                      
+            interfaces.mqtt.publish(mqttTopic, cmnd, 2, false)                      
         } catch(Exception e) {
             log.error "${device.displayName} unable to connect to the MQTT Broker ${e}"
         }
+        interfaces.mqtt.disconnect()
     } else log.error "${device.displayName} MQTT Broker and MQTT User are not set"
-    interfaces.mqtt.disconnect()
 }
 
 // parse events and messages
