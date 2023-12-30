@@ -1,7 +1,7 @@
 {
   "packageName": "Hubitat Virtual Hybrid Contact Switch",
   "author": "John Goughenour",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "minimumHEVersion": "2.1.9",
   "dateReleased": "2023-12-29",
   "licenseFile": "https://raw.githubusercontent.com/TOSH-SmartHome/Hubitat-Virtual-Hybrid-Contact-Switch/main/LICENSE",

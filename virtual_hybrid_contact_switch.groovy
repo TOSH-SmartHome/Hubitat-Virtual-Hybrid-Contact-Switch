@@ -25,7 +25,7 @@
  *
  */
 
-public static String version()      {  return "v2.0.1"  }
+public static String version()      {  return "v2.0.2"  }
 public static String name()         {  return "Virtual Hybrid Contact Switch"  }
 public static String driverInfo()   {  return "<p style=\"text-align:center\"></br><strong><a href='https://thisoldsmarthome.com' target='_blank'>This Old Smart Home</a></strong> (tosh)</br>${name()}<br/><em>${version()}</em></p>"  }
 
@@ -98,23 +98,6 @@ def sendMqttOn(){
 
 def sendMqttOff(){
   sendMqttCommand("off")
-}
-
-def setMqttBroker(broker, user) {
-    if(debugLogging) log.debug "${device.displayName} is setting up mqtt broker variables"
-    updateDataValue("MQTT_Broker", "${broker}")
-    updateDataValue("MQTT_User", user)
-}
-
-def clearMqttBrokerSettings() {
-    if(debugLogging) log.debug "${device.displayName} is clearing MQTT Broker data"
-    removeDataValue("MQTT_Broker")
-    removeDataValue("MQTT_User")      
-}
-
-def setMessageTopic(topic) {
-    if(debugLogging) log.debug "${device.displayName} is setting up mqtt message topic variable"
-    if(topic) updateDataValue("MQTT_Message_Topic", "${topic}") else removeDataValue("MQTT_Message_Topic")
 }
 
 def sendMqttCommand(cmnd) {
