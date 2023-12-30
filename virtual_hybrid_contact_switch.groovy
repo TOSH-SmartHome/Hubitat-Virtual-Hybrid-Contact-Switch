@@ -25,7 +25,7 @@
  *
  */
 
-public static String version()      {  return "v1.5.1"  }
+public static String version()      {  return "v2.0.1"  }
 public static String name()         {  return "Virtual Hybrid Contact Switch"  }
 public static String driverInfo()   {  return "<p style=\"text-align:center\"></br><strong><a href='https://thisoldsmarthome.com' target='_blank'>This Old Smart Home</a></strong> (tosh)</br>${name()}<br/><em>${version()}</em></p>"  }
 
