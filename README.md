@@ -8,3 +8,8 @@ This is a vitrual switch for the Hubitat Elevation platform that can be used wit
 
 ## Installation
 You can find detailed step by step instruction at [This Old Smart Home](https://thisoldsmarthome.com/automations/alexa-speaks-shared-devices/?tab=hubitat).
+
+### MQTT
+Easily integrates with MQTT, just add your broker information under preferences and click save. The topic is automatically configured and uses the devices display name in lowercase and an '_' replaces the spaces. 
+#### Topics
+    - cmnd/device_name
